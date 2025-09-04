@@ -1,12 +1,13 @@
 :root {
-  --primary: #4f46e5;
-  --secondary: #6366f1;
-  --bg: #f8fafc;
-  --text: #22223b;
-  --card-bg: #fff;
-  --border: #e5e7eb;
+  --elevvo-yellow: #ffc400;
+  --mint-green: #c7e313;
+  --dark-green: #222;
+  --bg-dark: #232526;
+  --bg-dark2: #414345;
+  --text-light: #fff;
+  --card-bg: #232526;
+  --border: #333;
 }
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -14,12 +15,13 @@
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  
+  background: linear-gradient(120deg, var(--bg-dark) 0%, var(--bg-dark2) 100%);
+  color: var(--text-light);
+  min-height: 100vh;
   line-height: 1.6;
 }
-
 .container {
   max-width: 1100px;
   margin: 0 auto;
@@ -27,39 +29,71 @@ body {
 }
 
 .header {
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  color: #fff;
+
+   background: linear-gradient(120deg, #232526 0%, #ffc400 100%); 
+ 
+ 
+  color: var(--text-light);
   text-align: center;
   padding-top: 4rem;
   padding-bottom: 4rem;
+  position: relative;
+   border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.10);
 }
+
+
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid var(--elevvo-yellow);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+
 
 .app-name {
   font-size: 2.5rem;
   font-weight: bold;
   letter-spacing: 2px;
+  color: var(--elevvo-yellow);
+  margin-bottom: 0.5rem;
 }
+
 
 .subtitle {
   font-size: 1.25rem;
   margin: 1rem 0 2rem 0;
+  color: #fff;
 }
-
 .cta-btn {
-  background: #fff;
-  color: var(--primary);
+  background: var(--elevvo-yellow);
+  color: var(--dark-green);
   padding: 0.75rem 2rem;
   border-radius: 999px;
   font-weight: bold;
   text-decoration: none;
   transition: background 0.2s, color 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  border: none;
+  font-size: 1.1rem;
 }
 
+
 .cta-btn:hover {
-  background: var(--secondary);
-  color: #fff;
+  background: #ffe066;
+  color: #000;
 }
+
 
 .features-grid, .reviews-grid, .pricing-grid {
   display: flex;
@@ -71,17 +105,17 @@ body {
 .features-grid {
   margin-top: 2rem;
 }
-
 .feature-card {
   background: var(--card-bg);
   border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   padding: 2rem 1.5rem;
   flex: 1 1 220px;
   min-width: 220px;
   max-width: 300px;
   text-align: center;
   border: 1px solid var(--border);
+  color: #fff;
 }
 
 .icon {
@@ -96,22 +130,24 @@ body {
 
 .reviews-grid blockquote {
   background: var(--card-bg);
-  border-left: 4px solid var(--primary);
+  border-left: 4px solid var(--elevvo-yellow);
   border-radius: 0.5rem;
   padding: 1.5rem 1rem 1rem 1.5rem;
   font-style: italic;
   flex: 1 1 220px;
   min-width: 220px;
   max-width: 350px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  color: #fff;
 }
 
 .reviews-grid footer {
   margin-top: 1rem;
   font-size: 0.95rem;
-  color: var(--secondary);
+  color: var(--elevvo-yellow);
   font-style: normal;
 }
+
 
 .pricing-grid {
   margin-top: 2rem;
@@ -130,21 +166,26 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+color: #fff;
 }
 
 .pricing-card h3 {
   margin-bottom: 0.5rem;
+  color: var(--elevvo-yellow);
 }
+
+
 
 .price {
   font-size: 2rem;
-  color: var(--primary);
+  color: var(--elevvo-yellow);
   margin: 0.5rem 0 1rem 0;
 }
 
 .pricing-card ul {
   list-style: none;
   margin-bottom: 1.5rem;
+  padding: 0;
 }
 
 .pricing-card li {
@@ -152,22 +193,26 @@ body {
 }
 
 .pricing-card button {
-  background: var(--primary);
-  color: #fff;
+  background: var(--elevvo-yellow);
+  color: var(--dark-green);
   border: none;
   border-radius: 999px;
   padding: 0.5rem 1.5rem;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.2s;
+  font-size: 1rem;
 }
 
 .pricing-card button:hover {
-  background: var(--secondary);
+  background: #ffe066;
+  color: #000;
 }
 
+
+
 .footer {
-  background: #22223b;
+  background: #111;
   color: #fff;
   text-align: center;
   padding: 2rem 0 1rem 0;
@@ -178,7 +223,7 @@ body {
 }
 
 .footer-links a {
-  color: #fff;
+  color: var(--elevvo-yellow);
   margin: 0 1rem;
   text-decoration: none;
   font-size: 1rem;
@@ -186,8 +231,9 @@ body {
 }
 
 .footer-links a:hover {
-  color: var(--secondary);
+  color: #fff;
 }
+
 
 .social-icons {
   margin-bottom: 1rem;
@@ -196,13 +242,14 @@ body {
 .social-icons a {
   font-size: 1.5rem;
   margin: 0 0.5rem;
-  color: #fff;
+  color: var(--elevvo-yellow);
   text-decoration: none;
   transition: color 0.2s;
 }
 
+
 .social-icons a:hover {
-  color: var(--secondary);
+  color: #fff;
 }
 
 .copyright {
@@ -211,7 +258,14 @@ body {
   margin-top: 1rem;
 }
 
-/* Section animation */
+
+.copyright {
+  font-size: 0.95rem;
+  color: #bfc0c0;
+  margin-top: 1rem;
+}
+
+
 .section {
   opacity: 0;
   transform: translateY(40px);
