@@ -14,13 +14,15 @@
   padding: 0;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 body {
-  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-  
-  background: linear-gradient(120deg, var(--bg-dark) 0%, var(--bg-dark2) 100%);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-dark2) 100%);
   color: var(--text-light);
   min-height: 100vh;
   line-height: 1.6;
+  scroll-behavior: smooth;
 }
 .container {
   max-width: 1100px;
@@ -108,7 +110,7 @@ body {
 .feature-card {
   background: var(--card-bg);
   border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   padding: 2rem 1.5rem;
   flex: 1 1 220px;
   min-width: 220px;
@@ -116,6 +118,30 @@ body {
   text-align: center;
   border: 1px solid var(--border);
   color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--elevvo-yellow), var(--mint-green));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
 }
 
 .icon {
@@ -137,8 +163,26 @@ body {
   flex: 1 1 220px;
   min-width: 220px;
   max-width: 350px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.reviews-grid blockquote:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.reviews-grid blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  font-size: 3rem;
+  color: var(--elevvo-yellow);
+  opacity: 0.3;
+  font-family: serif;
 }
 
 .reviews-grid footer {
@@ -156,7 +200,7 @@ body {
 .pricing-card {
   background: var(--card-bg);
   border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   padding: 2rem 1.5rem;
   flex: 1 1 220px;
   min-width: 220px;
@@ -166,7 +210,31 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-color: #fff;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--elevvo-yellow), var(--mint-green));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.pricing-card:hover::before {
+  transform: scaleX(1);
 }
 
 .pricing-card h3 {
@@ -268,9 +336,15 @@ color: #fff;
 
 .section {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+  transform: translateY(50px);
+  transition: opacity 0.8s cubic-bezier(.25,.46,.45,.94), transform 0.8s cubic-bezier(.25,.46,.45,.94);
   will-change: opacity, transform;
+}
+
+/* Header section is visible by default */
+.header {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section.visible {
@@ -278,7 +352,44 @@ color: #fff;
   transform: translateY(0);
 }
 
+/* Enhanced animations for different elements */
+.feature-card, .pricing-card, .reviews-grid blockquote {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition: opacity 0.6s cubic-bezier(.25,.46,.45,.94), transform 0.6s cubic-bezier(.25,.46,.45,.94);
+  transition-delay: 0.1s;
+}
+
+.section.visible .feature-card,
+.section.visible .pricing-card,
+.section.visible .reviews-grid blockquote {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Staggered animation for feature cards */
+.section.visible .feature-card:nth-child(1) { transition-delay: 0.1s; }
+.section.visible .feature-card:nth-child(2) { transition-delay: 0.2s; }
+.section.visible .feature-card:nth-child(3) { transition-delay: 0.3s; }
+
+/* Staggered animation for pricing cards */
+.section.visible .pricing-card:nth-child(1) { transition-delay: 0.1s; }
+.section.visible .pricing-card:nth-child(2) { transition-delay: 0.2s; }
+.section.visible .pricing-card:nth-child(3) { transition-delay: 0.3s; }
+
+/* Staggered animation for reviews */
+.section.visible .reviews-grid blockquote:nth-child(1) { transition-delay: 0.1s; }
+.section.visible .reviews-grid blockquote:nth-child(2) { transition-delay: 0.2s; }
+.section.visible .reviews-grid blockquote:nth-child(3) { transition-delay: 0.3s; }
+
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 900px;
+    padding: 2rem 1.5rem;
+  }
+}
+
 @media (max-width: 900px) {
   .features-grid, .reviews-grid, .pricing-grid {
     flex-direction: column;
@@ -286,7 +397,42 @@ color: #fff;
     align-items: center;
   }
   .container {
-    padding: 2rem 0.5rem;
+    padding: 2rem 1rem;
+  }
+  
+  .app-name {
+    font-size: 2.2rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .logo {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .app-name {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    margin: 0.8rem 0 1.5rem 0;
+  }
+  
+  .cta-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
   }
 }
 
@@ -295,15 +441,59 @@ color: #fff;
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
   }
+  
   .app-name {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
+  
   .features-grid, .reviews-grid, .pricing-grid {
     gap: 1rem;
   }
+  
   .feature-card, .pricing-card, .reviews-grid blockquote {
     min-width: 0;
     max-width: 100%;
-    padding: 1.2rem 0.7rem;
+    padding: 1.5rem 1rem;
+  }
+  
+  .container {
+    padding: 1.5rem 0.8rem;
+  }
+  
+  .icon {
+    font-size: 2rem;
+  }
+  
+  .footer-links a {
+    margin: 0 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .social-icons a {
+    font-size: 1.3rem;
+    margin: 0 0.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .app-name {
+    font-size: 1.6rem;
+  }
+  
+  .subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .feature-card, .pricing-card, .reviews-grid blockquote {
+    padding: 1.2rem 0.8rem;
+  }
+  
+  .container {
+    padding: 1rem 0.5rem;
   }
 }
